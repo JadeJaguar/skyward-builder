@@ -1,0 +1,71 @@
+/* the layered picture: same 3:2 shape as the sky images */
+.preview {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--navy);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow);
+}
+
+.preview-small {
+    border-radius: var(--radius);
+    box-shadow: none;
+}
+
+.layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* back layer: skies crossfade into each other */
+.layer-sky {
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+
+.layer-sky.is-active {
+    opacity: 1;
+}
+
+/* middle layer: balloon gently bobs forever */
+.layer-balloon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bob 6s ease-in-out infinite;
+}
+
+.preview-small .layer-balloon {
+    animation-duration: 7s;
+}
+
+.balloon-img {
+    height: 90%;
+    width: auto;
+    filter: drop-shadow(0 18px 18px rgba(30, 42, 74, 0.25));
+    transition: filter 0.9s ease;
+    animation: fade-in 0.5s ease-out;
+}
+
+/* darker balloon so it fits the Starry Night sky */
+.balloon-img.is-night {
+    filter: brightness(0.72) saturate(0.85) drop-shadow(0 18px 18px rgba(0, 0, 0, 0.3));
+}
+
+/* top layer: magic extra fades in */
+.layer-extra {
+    object-fit: cover;
+    pointer-events: none;
+    animation: fade-in 0.8s ease-out;
+}
+
+/* fireworks have a black background: screen blending hides the black and keeps the glow */
+.blend-screen {
+    mix-blend-mode: screen;
+}

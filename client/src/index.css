@@ -1,68 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --navy: #1E2A4A;
+    --coral: #F28C6A;
+    --peach: #FFD3B6;
+    --gold: #F4C95D;
+    --cream: #FFF8F0;
+    --lavender: #B8A9D9;
 
-#root {
-    --font-family: Rubik, Verdana, sans-serif;
-    --primary: rgb(115, 2, 12);
-    --primary-hover: black;
-    --color: white;
-    --h1-color: var(--color);
-    --h2-color: var(--color);
-    --h3-color: var(--color);
-    --card-background-color: rgba(0, 0, 0, 0.8);
-    --card-sectionning-background-color: rgba(0, 0, 0, 0.8);
-    --form-element-active-border-color: var(--color);
-    --form-element-placeholder-color: gray;
+    --navy-soft: #4A5677;
+    --danger: #B4473A;
+    --danger-soft: #FCE6E1;
+    --glass: rgba(255, 255, 255, 0.58);
+    --glass-border: rgba(255, 255, 255, 0.85);
+    --shadow: 0 18px 40px -18px rgba(30, 42, 74, 0.35);
+    --shadow-small: 0 8px 20px -12px rgba(30, 42, 74, 0.35);
+
+    --font-title: 'Fraunces', Georgia, serif;
+    --font-body: 'Nunito', system-ui, sans-serif;
+
+    --radius-large: 28px;
+    --radius: 18px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    color-scheme: light;
 }
 
-#root h1 {
-    font-size: 3rem;
-    margin-bottom: 0px;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-#root h2 {
-    margin-bottom: 0px;
+html, body {
+    margin: 0;
+    padding: 0;
 }
 
-#root h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0px;
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--navy);
+    background-color: var(--cream);
+    -webkit-font-smoothing: antialiased;
 }
 
-#root p {
-    margin-bottom: 10px;
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: -0.01em;
 }
 
-#root [role=button], #root button, #root input[type=submit] {
-    font-family: var(--font-family);
-    font-weight: 500;
-    text-transform: uppercase;
-    border: 2px solid transparent;
-    margin: 10px;
-    width: max-content;
+p {
+    margin: 0;
 }
 
-#root [role=button]:hover, #root button:hover, #root input[type=submit]:hover {
-    border: 2px solid var(--color);
+a {
+    color: inherit;
 }
 
-#root main {
-    display: flex;
-    overflow-x: hidden;
-    overflow-y: hidden;
+img {
+    display: block;
+    max-width: 100%;
 }
 
-#root article {
-    text-align: left;
-    margin-bottom: 5px;
+button, input {
+    font: inherit;
+    color: inherit;
 }
 
-#root article header {
-    border-bottom: 0px;
-    margin-bottom: 10px;
-}
-
-#root article footer {
-    border-top: 0px;
-    margin-top: 0px;
-    display: flex;
+:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
 }

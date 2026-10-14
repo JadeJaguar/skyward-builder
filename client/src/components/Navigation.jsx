@@ -1,19 +1,20 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import '../App.css'
 import '../css/Navigation.css'
 
 const Navigation = () => {
     return (
-        <nav>
-            <ul>
-                <li><h1>Skyward 🎈</h1></li>
-            </ul>
+        <nav className='nav'>
+            <Link to='/' className='nav-brand'>
+                <span className='nav-logo' aria-hidden='true'>🎈</span>
+                <span>Skyward</span>
+            </Link>
 
-            <ul>
-                <li><a href='/' role='button'>Design</a></li>
-                <li><a href='/balloons' role='button'>My Balloons</a></li>
+            <ul className='nav-links'>
+                <li><NavLink to='/' end className='nav-link'>Design</NavLink></li>
+                <li><NavLink to='/balloons' className='nav-link'>My Balloons</NavLink></li>
             </ul>
-            
         </nav>
     )
 }

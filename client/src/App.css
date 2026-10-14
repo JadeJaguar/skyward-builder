@@ -1,12 +1,246 @@
+/* page background: cream with soft sunset glows so the frosted glass has something to blur */
 .app {
-    background: url('./assets/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    min-height: 100vh;
+    background:
+        radial-gradient(900px 600px at 8% -10%, rgba(255, 211, 182, 0.75), transparent 60%),
+        radial-gradient(800px 600px at 105% 10%, rgba(184, 169, 217, 0.45), transparent 60%),
+        radial-gradient(900px 700px at 50% 120%, rgba(244, 201, 93, 0.22), transparent 60%),
+        var(--cream);
     background-attachment: fixed;
-    width: 100vw;
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding-bottom: 50px;
+    padding-bottom: 48px;
+}
+
+.glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+}
+
+/* buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    font-weight: 800;
+    font-size: 0.98rem;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s var(--ease), background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.btn-primary {
+    background: var(--coral);
+    color: var(--navy);
+    box-shadow: 0 10px 22px -10px rgba(242, 140, 106, 0.9);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #F59C7E;
+}
+
+.btn-dark {
+    background: var(--navy);
+    color: var(--cream);
+}
+
+.btn-dark:hover:not(:disabled) {
+    background: #2B3A62;
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: var(--lavender);
+    color: var(--navy);
+}
+
+.btn-ghost:hover:not(:disabled) {
+    background: var(--peach);
+    border-color: var(--peach);
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: #FFFFFF;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: #9C3A2F;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+/* price pill: coral background with navy text so it stays easy to read */
+.price {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: var(--coral);
+    color: var(--navy);
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.15rem;
+}
+
+.total-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy-soft);
+}
+
+/* messages */
+.form-error {
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: var(--danger-soft);
+    border: 1px solid rgba(180, 71, 58, 0.35);
+    color: #7A2A21;
+    font-weight: 700;
+    animation: shake 0.4s var(--ease);
+}
+
+.form-notice {
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: rgba(255, 211, 182, 0.7);
+    border: 1px solid rgba(242, 140, 106, 0.4);
+    font-weight: 600;
+    animation: rise-in 0.4s var(--ease);
+}
+
+.form-notice p + p {
+    margin-top: 4px;
+}
+
+/* loading, empty and error screens */
+.status-message {
+    max-width: 480px;
+    margin: 12vh auto 0;
+    padding: 0 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-message h2 {
+    font-size: 2rem;
+}
+
+.status-message p {
+    color: var(--navy-soft);
+    margin-bottom: 8px;
+}
+
+.status-icon {
+    font-size: 4rem;
+    animation: bob 5s ease-in-out infinite;
+}
+
+/* delete confirmation */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background: rgba(30, 42, 74, 0.45);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    animation: fade-in 0.2s ease-out;
+}
+
+.modal {
+    width: min(420px, 100%);
+    padding: 32px 28px 24px;
+    border-radius: var(--radius-large);
+    background: var(--cream);
+    box-shadow: var(--shadow);
+    text-align: center;
+    outline: none;
+    animation: rise-in 0.3s var(--ease);
+}
+
+.modal h3 {
+    font-size: 1.7rem;
+    margin-bottom: 8px;
+}
+
+.modal p {
+    color: var(--navy-soft);
+}
+
+.modal .form-error {
+    margin-top: 12px;
+}
+
+.modal-icon {
+    font-size: 2.6rem;
+    margin-bottom: 8px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+/* shared animations */
+@keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3%); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes rise-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
