@@ -1,29 +1,29 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Navigation from './components/Navigation'
-import ViewCars from './pages/ViewCars'
-import EditCar from './pages/EditCar'
-import CreateCar from './pages/CreateCar'
-import CarDetails from './pages/CarDetails'
+import ViewBalloons from './pages/ViewBalloons'
+import EditBalloon from './pages/EditBalloon'
+import CreateBalloon from './pages/CreateBalloon'
+import BalloonDetails from './pages/BalloonDetails'
 import './App.css'
 
 const App = () => {
   let element = useRoutes([
     {
       path: '/',
-      element: <CreateCar title='BOLT BUCKET | Customize' />
+      element: <CreateBalloon title='SKYWARD | Design' />
     },
     {
-      path:'/customcars',
-      element: <ViewCars title='BOLT BUCKET | Custom Cars' />
+      path:'/balloons',
+      element: <ViewBalloons title='SKYWARD | My Balloons' />
     },
     {
-      path: '/customcars/:id',
-      element: <CarDetails title='BOLT BUCKET | View' />
+      path: '/balloons/:id',
+      element: <BalloonDetails title='SKYWARD | View' />
     },
     {
       path: '/edit/:id',
-      element: <EditCar title='BOLT BUCKET | Edit' />
+      element: <EditBalloon title='SKYWARD | Edit' />
     }
   ])
 

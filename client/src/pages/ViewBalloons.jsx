@@ -1,13 +1,13 @@
 import React from 'react'
 import '../App.css'
 
-const CarDetails = () => {
-
+const ViewBalloons = () => {
+    
     return (
         <div>
-
+            
         </div>
     )
 }
 
-export default CarDetails
+export default ViewBalloons
