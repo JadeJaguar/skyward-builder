@@ -1,12 +1,12 @@
 import express from 'express'
 import path from 'path'
 import favicon from 'serve-favicon'
-import dotenv from 'dotenv'
+import './config/dotenv.js'
 
 // import the router from your routes file
+import balloonsRouter from './routes/balloons.js'
+import optionsRouter from './routes/options.js'
 
-
-dotenv.config()
 
 const PORT = process.env.PORT || 3000
 
@@ -23,6 +23,8 @@ else if (process.env.NODE_ENV === 'production') {
 }
 
 // specify the api path for the server to use
+app.use('/api/balloons', balloonsRouter)
+app.use('/api/options', optionsRouter)
 
 
 if (process.env.NODE_ENV === 'production') {
